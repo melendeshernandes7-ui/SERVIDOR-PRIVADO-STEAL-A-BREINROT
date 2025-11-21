@@ -5,56 +5,44 @@
 <title>Servidor Privado de SAMMY</title>
 <style>
     body {
-        background-color: #0d0d0d;
         font-family: Arial, sans-serif;
+        background: #0d0f18;
         color: white;
         text-align: center;
-        margin: 0;
-        padding: 0;
+        padding: 40px;
     }
-
     .container {
-        margin-top: 80px;
-    }
-
-    .box {
-        background: #111;
+        background: #1a1d2b;
         padding: 25px;
-        width: 85%;
-        max-width: 380px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 430px;
         margin: auto;
-        border-radius: 12px;
-        border: 2px solid #007bff;
-        box-shadow: 0 0 10px #007bff;
+        box-shadow: 0 0 15px #00d0ff;
     }
-
     input {
-        width: 85%;
+        width: 90%;
         padding: 12px;
-        margin-top: 15px;
-        border-radius: 8px;
         border: none;
-        outline: none;
-        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        font-size: 18px;
     }
-
-    .btn {
-        background: #0084ff;
-        color: white;
-        width: 85%;
+    button {
+        width: 90%;
         padding: 14px;
+        background: #00d0ff;
         border: none;
-        border-radius: 8px;
-        margin-top: 15px;
-        font-size: 16px;
+        color: black;
+        font-size: 18px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: 0.3s;
+        font-weight: bold;
+        transition: 0.2s;
     }
-
-    .btn:hover {
-        background: #0a6cd1;
+    button:hover {
+        background: #00a5cc;
     }
-
     .hidden {
         display: none;
     }
@@ -64,45 +52,67 @@
 
 <div class="container">
 
-    <!-- Página 1 -->
-    <div id="page1" class="box">
-        <h2>Servidor Privado de SAMMY</h2>
-        <input type="text" id="username" placeholder="Ingresa tu usuario de Roblox...">
-        <button class="btn" onclick="goToPage2()">Continuar</button>
+    <h2>Servidor Privado de SAMMY</h2>
+
+    <!-- PAGINA 1 -->
+    <div id="pagina1">
+        <p>Ingresa tu usuario de Roblox</p>
+        <input type="text" id="usuario" placeholder="Usuario del jugador">
+        <button onclick="continuar()">Continuar</button>
     </div>
 
-    <!-- Página 2 -->
-    <div id="page2" class="hidden">
-        <h2>Desbloquea el acceso</h2>
+    <!-- PAGINA 2 -->
+    <div id="pagina2" class="hidden">
+        <h3>Perfecto, <span id="nameShow"></span></h3>
+        <p>Pulsa el botón para obtener acceso al servidor privado.</p>
 
-        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
-            <button class="btn">💬 Comentar en el video</button>
-        </a>
-
-        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
-            <button class="btn">⭐ Darle Like al video</button>
-        </a>
-
-        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
-            <button class="btn">📁 Guardar el video</button>
-        </a>
-
-        <a href="https://tiktok.com/@keiner_hernandez1_1" target="_blank">
-            <button class="btn">➕ Seguirme en TikTok (@keiner_hernandez1_1)</button>
-        </a>
-
-        <button class="btn" onclick="goToPage3()">Ya hice los 4 pasos</button>
+        <button onclick="mostrarFinal()">Desbloquear acceso</button>
     </div>
 
-    <!-- Página 3 -->
-    <div id="page3" class="hidden">
-        <h2>Acceso Listo</h2>
-        <p>Haz clic abajo para entrar al servidor privado:</p>
-
-        <a href="https://www.roblox.com/share?code=3d317fc9027f6447bc0103151aca65c3&type=Server" target="_blank">
-            <button class="btn">Entrar al Servidor Privado</button>
-        </a>
+    <!-- PAGINA 3 -->
+    <div id="pagina3" class="hidden">
+        <h3>Acceso generado</h3>
+        <p>Presiona el botón para abrir un servidor privado aleatorio.</p>
+        <button onclick="abrirServidorRandom()">Abrir servidor privado</button>
     </div>
+
+</div>
+
+<script>
+// --- SERVIDORES RANDOM ---
+const servers = [
+    "https://www.roblox.com/share?code=3d317fc9027f6447bc0103151aca65c3&type=Server",
+    "https://www.roblox.com/share?code=aa7fe5eb061d024eaf954cfe32610af6&type=Server"
+];
+
+// --- PÁGINA 1 → PÁGINA 2 ---
+function continuar() {
+    const user = document.getElementById("usuario").value.trim();
+    if (user === "") {
+        alert("Por favor ingresa un usuario.");
+        return;
+    }
+
+    document.getElementById("nameShow").textContent = user;
+    document.getElementById("pagina1").classList.add("hidden");
+    document.getElementById("pagina2").classList.remove("hidden");
+}
+
+// --- PÁGINA 2 → PÁGINA 3 ---
+function mostrarFinal() {
+    document.getElementById("pagina2").classList.add("hidden");
+    document.getElementById("pagina3").classList.remove("hidden");
+}
+
+// --- ABRIR SERVIDOR RANDOM ---
+function abrirServidorRandom() {
+    const randomIndex = Math.floor(Math.random() * servers.length);
+    window.location.href = servers[randomIndex];
+}
+</script>
+
+</body>
+</html>    </div>
 
 </div>
 
