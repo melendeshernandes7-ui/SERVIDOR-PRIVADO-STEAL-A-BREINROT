@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Servidor Privado de SAMMY</title>
+<style>
+    body {
+        background-color: #0d0d0d;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin-top: 80px;
+    }
+
+    .box {
+        background: #111;
+        padding: 25px;
+        width: 85%;
+        max-width: 380px;
+        margin: auto;
+        border-radius: 12px;
+        border: 2px solid #007bff;
+        box-shadow: 0 0 10px #007bff;
+    }
+
+    input {
+        width: 85%;
+        padding: 12px;
+        margin-top: 15px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        text-align: center;
+    }
+
+    .btn {
+        background: #0084ff;
+        color: white;
+        width: 85%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #0a6cd1;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Página 1 -->
+    <div id="page1" class="box">
+        <h2>Servidor Privado de SAMMY</h2>
+        <input type="text" id="username" placeholder="Ingresa tu usuario de Roblox...">
+        <button class="btn" onclick="goToPage2()">Continuar</button>
+    </div>
+
+    <!-- Página 2 -->
+    <div id="page2" class="hidden">
+        <h2>Desbloquea el acceso</h2>
+
+        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
+            <button class="btn">💬 Comentar en el video</button>
+        </a>
+
+        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
+            <button class="btn">⭐ Darle Like al video</button>
+        </a>
+
+        <a href="https://vt.tiktok.com/ZSfMGwXLF/" target="_blank">
+            <button class="btn">📁 Guardar el video</button>
+        </a>
+
+        <a href="https://tiktok.com/@keiner_hernandez1_1" target="_blank">
+            <button class="btn">➕ Seguirme en TikTok (@keiner_hernandez1_1)</button>
+        </a>
+
+        <button class="btn" onclick="goToPage3()">Ya hice los 4 pasos</button>
+    </div>
+
+    <!-- Página 3 -->
+    <div id="page3" class="hidden">
+        <h2>Acceso Listo</h2>
+        <p>Haz clic abajo para entrar al servidor privado:</p>
+
+        <a href="https://www.roblox.com/share?code=3d317fc9027f6447bc0103151aca65c3&type=Server" target="_blank">
+            <button class="btn">Entrar al Servidor Privado</button>
+        </a>
+    </div>
+
+</div>
+
+<script>
+function goToPage2() {
+    let user = document.getElementById("username").value.trim();
+    if (user === "") {
+        alert("Por favor ingresa tu usuario de Roblox.");
+        return;
+    }
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+function goToPage3() {
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
